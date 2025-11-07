@@ -1,12 +1,12 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useMemo, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import StatsCards from './components/StatsCards';
 import QuickActions from './components/QuickActions';
 import SearchFilters from './components/SearchFilters';
 
 function Home() {
-  const [stats, setStats] = useState({ jobs: 12, candidates: 87, interviews: 9, selected: 5 });
+  const [stats] = useState({ jobs: 12, candidates: 87, interviews: 9, selected: 5 });
 
   const handleSearch = (filters) => {
     // For now just log; in real app we'd call backend with filters
@@ -34,19 +34,17 @@ function Placeholder({ title }) {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/recruiter" element={<Placeholder title="Recruiter Workspace" />} />
-          <Route path="/admin" element={<Placeholder title="Admin Panel" />} />
-          <Route path="/jobs/new" element={<Placeholder title="Create Job" />} />
-          <Route path="/candidates/new" element={<Placeholder title="Add Candidate" />} />
-          <Route path="/candidates/import" element={<Placeholder title="Import Candidates via CSV" />} />
-          <Route path="/reports" element={<Placeholder title="Reports & Analytics" />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recruiter" element={<Placeholder title="Recruiter Workspace" />} />
+        <Route path="/admin" element={<Placeholder title="Admin Panel" />} />
+        <Route path="/jobs/new" element={<Placeholder title="Create Job" />} />
+        <Route path="/candidates/new" element={<Placeholder title="Add Candidate" />} />
+        <Route path="/candidates/import" element={<Placeholder title="Import Candidates via CSV" />} />
+        <Route path="/reports" element={<Placeholder title="Reports & Analytics" />} />
+      </Routes>
+    </div>
   );
 }
